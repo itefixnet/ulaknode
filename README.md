@@ -8,39 +8,40 @@ Postfix + Dovecot + Rspamd + ClamAV + Fail2ban + Apache/Drupal — supervised in
 
 > Status: Early-stage (alpha). Expect rapid changes; not production-ready.
 
+ <img src="docs/images/ulaknode-status-1.png" width="45%" alt="Status dashboard">
+
 ## Screenshots
 
 <details>
   <summary>Show screenshots</summary>
 
   <p align="center">
-    <img src="docs/images/ulaknode-status-1.png" width="45%" alt="Dashboard">
-    <img src="docs/images/ulaknode-virtual-1.png" width="45%" alt="Rspamd UI">
+    <img src="docs/images/ulaknode-status-1.png" width="45%" alt="Status dashboard">
+    <img src="docs/images/ulaknode-virtual-1.png" width="45%" alt="Virtual mailboxes, domains and aliases">
   </p>
 
   <p align="center">
-    <img src="docs/images/ulaknode-postfix-1.png" width="45%" alt="Mailboxes">
-    <img src="docs/images/ulaknode-dovecote-1.png" width="45%" alt="Config editor">
+    <img src="docs/images/ulaknode-postfix-1.png" width="45%" alt="Postfix">
+    <img src="docs/images/ulaknode-dovecote-1.png" width="45%" alt="Dovecote">
   </p>
 
   <p align="center">
-    <img src="docs/images/ulaknode-rspamd-1.png" width="45%" alt="Mailboxes">
-    <img src="docs/images/ulaknode-rspamd-dkim-1.png" width="45%" alt="Config editor">
+    <img src="docs/images/ulaknode-rspamd-1.png" width="45%" alt="Rspamd">
+    <img src="docs/images/ulaknode-rspamd-dkim-1.png" width="45%" alt="Rspamd DKIM signing">
   </p>
 
   <p align="center">
-    <img src="docs/images/ulaknode-rspamd-clamav-1.png" width="45%" alt="Mailboxes">
-    <img src="docs/images/ulaknode-config-1.png" width="45%" alt="Config editor">
+    <img src="docs/images/ulaknode-rspamd-clamav-1.png" width="45%" alt="Rspamd ClamAV">
+    <img src="docs/images/ulaknode-config-1.png" width="45%" alt="Config Editor">
   </p>
 
   <p align="center">
-    <img src="docs/images/ulaknode-config-2.png" width="45%" alt="Mailboxes">
+    <img src="docs/images/ulaknode-config-2.png" width="45%" alt="Config Editor">
     <img src="docs/images/ulaknode-config-3.png" width="45%" alt="Config editor">
   </p>
 
   <p align="center">
-    <img src="docs/images/ulaknode-config-3.png" width="45%" alt="Mailboxes">
-    <img src="docs/images/ulaknode-drupal-1.png" width="45%" alt="Config editor">
+    <img src="docs/images/ulaknode-drupal-1.png" width="45%" alt="Drupal">
   </p>
 
   <p align="center">
