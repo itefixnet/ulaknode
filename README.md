@@ -8,7 +8,7 @@ Postfix + Dovecot + Rspamd + ClamAV + Fail2ban + Apache/Drupal — supervised in
 
 > Status: Early-stage (alpha). Expect rapid changes; not production-ready.
 
- <img src="docs/images/ulaknode-status-1.png" width="45%" alt="Status dashboard">
+ <img src="docs/images/ulaknode-status-1.png" width="75%" alt="Status dashboard">
 
 ## Screenshots
 
