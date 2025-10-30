@@ -8,6 +8,27 @@ Postfix + Dovecot + Rspamd + ClamAV + Fail2ban + Apache/Drupal — supervised in
 
 > Status: Early-stage (alpha). Expect rapid changes; not production-ready.
 
+## Screenshots
+
+<details>
+  <summary>Show screenshots</summary>
+
+  <p align="center">
+    <img src="docs/images/screen1.png" width="45%" alt="Dashboard">
+    <img src="docs/images/screen2.png" width="45%" alt="Rspamd UI">
+  </p>
+
+  <p align="center">
+    <img src="docs/images/screen3.png" width="45%" alt="Mailboxes">
+    <img src="docs/images/screen4.png" width="45%" alt="Config editor">
+  </p>
+
+  <p align="center">
+    <em>Add PNGs under <code>docs/images/</code> with the names above to populate this gallery.</em>
+  </p>
+
+</details>
+
 ## What is this?
 
 Ulaknode is a single‑container mail stack that ships with a Drupal 11 site as the admin/frontend. It bundles:
