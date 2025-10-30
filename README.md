@@ -206,6 +206,10 @@ docker exec -it ulaknode ulaknode-logtail rspamd
 - `supervisor/` — process supervision config
 - `sqlite3/vmail-schema.sql` — schema for virtual mail
 
+## Development
+
+Ulaknode is being developed for our [OpsBay](https://opsbay.com) service infrastructure.
+
 ## License
 
 BSD 2‑Clause — see `LICENSE`.
