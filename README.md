@@ -6,6 +6,8 @@ Postfix + Dovecot + Rspamd + ClamAV + Fail2ban + Apache/Drupal — supervised in
 
 </div>
 
+> Status: Early-stage (alpha). Expect rapid changes; not production-ready.
+
 ## What is this?
 
 Ulaknode is a single‑container mail stack that ships with a Drupal 11 site as the admin/frontend. It bundles:
