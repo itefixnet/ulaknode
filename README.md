@@ -14,13 +14,33 @@ Postfix + Dovecot + Rspamd + ClamAV + Fail2ban + Apache/Drupal — supervised in
   <summary>Show screenshots</summary>
 
   <p align="center">
-    <img src="docs/images/screen1.png" width="45%" alt="Dashboard">
-    <img src="docs/images/screen2.png" width="45%" alt="Rspamd UI">
+    <img src="docs/images/ulaknode-status-1.png" width="45%" alt="Dashboard">
+    <img src="docs/images/ulaknode-virtual-1.png" width="45%" alt="Rspamd UI">
   </p>
 
   <p align="center">
-    <img src="docs/images/screen3.png" width="45%" alt="Mailboxes">
-    <img src="docs/images/screen4.png" width="45%" alt="Config editor">
+    <img src="docs/images/ulaknode-postfix-1.png" width="45%" alt="Mailboxes">
+    <img src="docs/images/ulaknode-dovecote-1.png" width="45%" alt="Config editor">
+  </p>
+
+  <p align="center">
+    <img src="docs/images/ulaknode-rspamd-1.png" width="45%" alt="Mailboxes">
+    <img src="docs/images/ulaknode-rspamd-dkim-1.png" width="45%" alt="Config editor">
+  </p>
+
+  <p align="center">
+    <img src="docs/images/ulaknode-rspamd-clamav-1.png" width="45%" alt="Mailboxes">
+    <img src="docs/images/ulaknode-config-1.png" width="45%" alt="Config editor">
+  </p>
+
+  <p align="center">
+    <img src="docs/images/ulaknode-config-2.png" width="45%" alt="Mailboxes">
+    <img src="docs/images/ulaknode-config-3.png" width="45%" alt="Config editor">
+  </p>
+
+  <p align="center">
+    <img src="docs/images/ulaknode-config-3.png" width="45%" alt="Mailboxes">
+    <img src="docs/images/ulaknode-drupal-1.png" width="45%" alt="Config editor">
   </p>
 
   <p align="center">
