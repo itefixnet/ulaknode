@@ -18,7 +18,7 @@ Postfix + Dovecot + Rspamd + ClamAV + Fail2ban + Apache/Drupal — supervised in
 
   <p align="center">
     <a href="docs/images/ulaknode-postfix-1.png"><img src="docs/images/ulaknode-postfix-1.png" width="45%" alt="Postfix"></a>
-    <a href="docs/images/ulaknode-dovecote-1.png"><img src="docs/images/ulaknode-dovecote-1.png" width="45%" alt="Dovecote"></a>
+    <a href="docs/images/ulaknode-dovecot-1.png"><img src="docs/images/ulaknode-dovecot-1.png" width="45%" alt="Dovecote"></a>
   </p>
 
   <p align="center">
