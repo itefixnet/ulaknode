@@ -8,12 +8,8 @@ Postfix + Dovecot + Rspamd + ClamAV + Fail2ban + Apache/Drupal — supervised in
 
 > Status: Early-stage (alpha). Expect rapid changes; not production-ready.
 
- <img src="docs/images/ulaknode-status-1.png" width="75%" alt="Status dashboard">
 
 ## Screenshots
-
-<details>
-  <summary>Show screenshots</summary>
 
   <p align="center">
     <a href="docs/images/ulaknode-status-1.png"><img src="docs/images/ulaknode-status-1.png" width="45%" alt="Status dashboard"></a>
@@ -43,12 +39,6 @@ Postfix + Dovecot + Rspamd + ClamAV + Fail2ban + Apache/Drupal — supervised in
   <p align="center">
     <a href="docs/images/ulaknode-drupal-1.png"><img src="docs/images/ulaknode-drupal-1.png" width="45%" alt="Drupal"></a>
   </p>
-
-  <p align="center">
-    <em>Add PNGs under <code>docs/images/</code> with the names above to populate this gallery. Click any image to view at full size.</em>
-  </p>
-
-</details>
 
 ## What is this?
 
