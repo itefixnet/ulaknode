@@ -12,32 +12,26 @@ Postfix + Dovecot + Rspamd + ClamAV + Fail2ban + Apache/Drupal — supervised in
 ## Screenshots
 
   <p align="center">
-    <a href="#status-modal"><img src="docs/images/ulaknode-status-1.png" width="45%" alt="Status dashboard"></a>
-    <a href="#virtual-modal"><img src="docs/images/ulaknode-virtual-1.png" width="45%" alt="Virtual mailboxes, domains and aliases"></a>
+    <a href="#status-modal"><img src="docs/images/ulaknode-status-1.png" width="30%" alt="Status dashboard"></a>
+    <a href="#virtual-modal"><img src="docs/images/ulaknode-virtual-1.png" width="30%" alt="Virtual mailboxes, domains and aliases"></a>
+    <a href="#postfix-modal"><img src="docs/images/ulaknode-postfix-1.png" width="30%" alt="Postfix"></a>
   </p>
 
   <p align="center">
-    <a href="#postfix-modal"><img src="docs/images/ulaknode-postfix-1.png" width="45%" alt="Postfix"></a>
-    <a href="#dovecot-modal"><img src="docs/images/ulaknode-dovecot-1.png" width="45%" alt="Dovecote"></a>
+    <a href="#dovecot-modal"><img src="docs/images/ulaknode-dovecot-1.png" width="30%" alt="Dovecote"></a>
+    <a href="#rspamd-modal"><img src="docs/images/ulaknode-rspamd-1.png" width="30%" alt="Rspamd"></a>
+    <a href="#dkim-modal"><img src="docs/images/ulaknode-rspamd-dkim-1.png" width="30%" alt="Rspamd DKIM signing"></a>
   </p>
 
   <p align="center">
-    <a href="#rspamd-modal"><img src="docs/images/ulaknode-rspamd-1.png" width="45%" alt="Rspamd"></a>
-    <a href="#dkim-modal"><img src="docs/images/ulaknode-rspamd-dkim-1.png" width="45%" alt="Rspamd DKIM signing"></a>
+    <a href="#clamav-modal"><img src="docs/images/ulaknode-rspamd-clamav-1.png" width="30%" alt="Rspamd ClamAV"></a>
+    <a href="#config1-modal"><img src="docs/images/ulaknode-config-1.png" width="30%" alt="Config Editor"></a>
+    <a href="#config2-modal"><img src="docs/images/ulaknode-config-2.png" width="30%" alt="Config Editor"></a>
   </p>
 
   <p align="center">
-    <a href="#clamav-modal"><img src="docs/images/ulaknode-rspamd-clamav-1.png" width="45%" alt="Rspamd ClamAV"></a>
-    <a href="#config1-modal"><img src="docs/images/ulaknode-config-1.png" width="45%" alt="Config Editor"></a>
-  </p>
-
-  <p align="center">
-    <a href="#config2-modal"><img src="docs/images/ulaknode-config-2.png" width="45%" alt="Config Editor"></a>
-    <a href="#config3-modal"><img src="docs/images/ulaknode-config-3.png" width="45%" alt="Config editor"></a>
-  </p>
-
-  <p align="center">
-    <a href="#drupal-modal"><img src="docs/images/ulaknode-drupal-1.png" width="45%" alt="Drupal"></a>
+    <a href="#config3-modal"><img src="docs/images/ulaknode-config-3.png" width="30%" alt="Config editor"></a>
+    <a href="#drupal-modal"><img src="docs/images/ulaknode-drupal-1.png" width="30%" alt="Drupal"></a>
   </p>
 
 <details id="status-modal">
