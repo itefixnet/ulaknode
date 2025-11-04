@@ -61,7 +61,7 @@ Ulaknode is a single‑container mail stack that ships with a Drupal 11 site as 
 - Fail2ban to block brute‑force attempts
 - Apache + PHP + Drush to serve Drupal and manage the stack
 - Supervisor to keep all services running together
-- File Browser UI (proxied at /files) for browsing config files (no auth by default)
+- File Browser UI (proxied at /files) for browsing config files
 
 The image initializes Drupal automatically (SQLite), creates the virtual‑mail schema, and generates service configs on first run.
 
@@ -94,9 +94,9 @@ Then:
 
 - Visit http://localhost/ for the Drupal UI
 - Rspamd UI: http://localhost/rspamd/
-- File Browser: http://localhost/files/ (no auth; protect it!)
+- File Browser: http://localhost/files/
 
-> Tip: If running behind a reverse proxy/load‑balancer, set `ULAKNODE_REVERSE_PROXY_IP` to the proxy’s IP so Drupal trusts forwarded headers.
+> Tip: If running behind a reverse proxy/load‑balancer, set `ULAKNODE_REVERSE_PROXY_IP` to the proxy's IP so Drupal trusts forwarded headers.
 
 ## Ports, data, and processes
 
@@ -167,9 +167,9 @@ The Apache vhost proxies two internal services by default:
 - `/rspamd/` → Rspamd controller on 127.0.0.1:11334
 - `/files/` → File Browser on 127.0.0.1:8080 (started with `--noauth`)
 
-Security note: Protect these paths (IP allow‑list, basic auth, SSO, or remove the proxies) before exposing the site to the internet.
+Security note: These paths are protected by Drupal authentication and require login to access.
 
-Note: The Dockerfile expects a `filebrowser` binary in the repo root at build time (`COPY filebrowser /usr/local/bin/filebrowser`). If you don’t include it, remove the File Browser program from `supervisor/supervisord.conf` and the proxy from `apache2/drupal.conf`.
+Note: The Dockerfile expects a `filebrowser` binary in the repo root at build time (`COPY filebrowser /usr/local/bin/filebrowser`). If you don't include it, remove the File Browser program from `supervisor/supervisord.conf` and the proxy from `apache2/drupal.conf`.
 
 ## Operating the stack
 
@@ -195,7 +195,7 @@ docker exec -it ulaknode ulaknode-logtail rspamd
 ## Known notes and limitations
 
 - The Dockerfile defines `DRUPAL_DB_PATH`, but the entrypoint uses `/var/lib/drupal/db.sqlite` (the latter is authoritative)
-- File Browser and Rspamd UIs are proxied without auth — secure or disable those paths
+- File Browser and Rspamd UIs are accessible through Drupal authentication
 
 ## Repository layout (high‑level)
 
