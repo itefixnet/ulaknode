@@ -67,61 +67,6 @@ Postfix + Dovecot + Rspamd + ClamAV + Fail2ban + Apache/Drupal — supervised in
     </details>
   </p>
 
-<details id="status-modal">
-<summary>📸 Status Dashboard - Full Size</summary>
-<img src="docs/images/ulaknode-status-1.png" width="100%" alt="Status dashboard">
-</details>
-
-<details id="virtual-modal">
-<summary>📸 Virtual Mailboxes - Full Size</summary>
-<img src="docs/images/ulaknode-virtual-1.png" width="100%" alt="Virtual mailboxes, domains and aliases">
-</details>
-
-<details id="postfix-modal">
-<summary>📸 Postfix Configuration - Full Size</summary>
-<img src="docs/images/ulaknode-postfix-1.png" width="100%" alt="Postfix">
-</details>
-
-<details id="dovecot-modal">
-<summary>📸 Dovecot Configuration - Full Size</summary>
-<img src="docs/images/ulaknode-dovecot-1.png" width="100%" alt="Dovecot">
-</details>
-
-<details id="rspamd-modal">
-<summary>📸 Rspamd Interface - Full Size</summary>
-<img src="docs/images/ulaknode-rspamd-1.png" width="100%" alt="Rspamd">
-</details>
-
-<details id="dkim-modal">
-<summary>📸 Rspamd DKIM Signing - Full Size</summary>
-<img src="docs/images/ulaknode-rspamd-dkim-1.png" width="100%" alt="Rspamd DKIM signing">
-</details>
-
-<details id="clamav-modal">
-<summary>📸 Rspamd ClamAV - Full Size</summary>
-<img src="docs/images/ulaknode-rspamd-clamav-1.png" width="100%" alt="Rspamd ClamAV">
-</details>
-
-<details id="config1-modal">
-<summary>📸 Config Editor - Full Size</summary>
-<img src="docs/images/ulaknode-config-1.png" width="100%" alt="Config Editor">
-</details>
-
-<details id="config2-modal">
-<summary>📸 Config Editor 2 - Full Size</summary>
-<img src="docs/images/ulaknode-config-2.png" width="100%" alt="Config Editor">
-</details>
-
-<details id="config3-modal">
-<summary>📸 Config Editor 3 - Full Size</summary>
-<img src="docs/images/ulaknode-config-3.png" width="100%" alt="Config Editor">
-</details>
-
-<details id="drupal-modal">
-<summary>📸 Drupal Interface - Full Size</summary>
-<img src="docs/images/ulaknode-drupal-1.png" width="100%" alt="Drupal">
-</details>
-
 ## What is this?
 
 Ulaknode is a single‑container mail stack that ships with a Drupal 11 site as the admin/frontend. It bundles:
