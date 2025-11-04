@@ -12,161 +12,29 @@ Postfix + Dovecot + Rspamd + ClamAV + Fail2ban + Apache/Drupal — supervised in
 ## Screenshots
 
   <p align="center">
-    <a href="#img1"><img src="docs/images/ulaknode-status-1.png" width="30%" alt="Status dashboard" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px;"></a>
-    <a href="#img2"><img src="docs/images/ulaknode-virtual-1.png" width="30%" alt="Virtual mailboxes, domains and aliases" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px;"></a>
-    <a href="#img3"><img src="docs/images/ulaknode-postfix-1.png" width="30%" alt="Postfix" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px;"></a>
+    <a href="docs/images/ulaknode-status-1.png" target="_blank"><img src="docs/images/ulaknode-status-1.png" width="30%" alt="Status dashboard" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px; margin: 5px;"></a>
+    <a href="docs/images/ulaknode-virtual-1.png" target="_blank"><img src="docs/images/ulaknode-virtual-1.png" width="30%" alt="Virtual mailboxes, domains and aliases" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px; margin: 5px;"></a>
+    <a href="docs/images/ulaknode-postfix-1.png" target="_blank"><img src="docs/images/ulaknode-postfix-1.png" width="30%" alt="Postfix" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px; margin: 5px;"></a>
   </p>
 
   <p align="center">
-    <a href="#img4"><img src="docs/images/ulaknode-dovecot-1.png" width="30%" alt="Dovecot" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px;"></a>
-    <a href="#img5"><img src="docs/images/ulaknode-rspamd-1.png" width="30%" alt="Rspamd" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px;"></a>
-    <a href="#img6"><img src="docs/images/ulaknode-rspamd-dkim-1.png" width="30%" alt="Rspamd DKIM signing" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px;"></a>
+    <a href="docs/images/ulaknode-dovecot-1.png" target="_blank"><img src="docs/images/ulaknode-dovecot-1.png" width="30%" alt="Dovecot" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px; margin: 5px;"></a>
+    <a href="docs/images/ulaknode-rspamd-1.png" target="_blank"><img src="docs/images/ulaknode-rspamd-1.png" width="30%" alt="Rspamd" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px; margin: 5px;"></a>
+    <a href="docs/images/ulaknode-rspamd-dkim-1.png" target="_blank"><img src="docs/images/ulaknode-rspamd-dkim-1.png" width="30%" alt="Rspamd DKIM signing" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px; margin: 5px;"></a>
   </p>
 
   <p align="center">
-    <a href="#img7"><img src="docs/images/ulaknode-rspamd-clamav-1.png" width="30%" alt="Rspamd ClamAV" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px;"></a>
-    <a href="#img8"><img src="docs/images/ulaknode-config-1.png" width="30%" alt="Config Editor" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px;"></a>
-    <a href="#img9"><img src="docs/images/ulaknode-config-2.png" width="30%" alt="Config Editor" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px;"></a>
+    <a href="docs/images/ulaknode-rspamd-clamav-1.png" target="_blank"><img src="docs/images/ulaknode-rspamd-clamav-1.png" width="30%" alt="Rspamd ClamAV" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px; margin: 5px;"></a>
+    <a href="docs/images/ulaknode-config-1.png" target="_blank"><img src="docs/images/ulaknode-config-1.png" width="30%" alt="Config Editor" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px; margin: 5px;"></a>
+    <a href="docs/images/ulaknode-config-2.png" target="_blank"><img src="docs/images/ulaknode-config-2.png" width="30%" alt="Config Editor" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px; margin: 5px;"></a>
   </p>
 
   <p align="center">
-    <a href="#img10"><img src="docs/images/ulaknode-config-3.png" width="30%" alt="Config editor" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px;"></a>
-    <a href="#img11"><img src="docs/images/ulaknode-drupal-1.png" width="30%" alt="Drupal" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px;"></a>
+    <a href="docs/images/ulaknode-config-3.png" target="_blank"><img src="docs/images/ulaknode-config-3.png" width="30%" alt="Config editor" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px; margin: 5px;"></a>
+    <a href="docs/images/ulaknode-drupal-1.png" target="_blank"><img src="docs/images/ulaknode-drupal-1.png" width="30%" alt="Drupal" style="cursor: pointer; border: 2px solid #ddd; border-radius: 8px; margin: 5px;"></a>
   </p>
 
-<!-- Modal overlays -->
-<div id="img1" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000;">
-  <div style="display: flex; justify-content: center; align-items: center; height: 100%; padding: 20px;">
-    <div style="max-width: 90%; max-height: 90%; position: relative;">
-      <a href="#" style="position: absolute; top: -40px; right: 0; color: white; font-size: 30px; text-decoration: none;">&times;</a>
-      <img src="docs/images/ulaknode-status-1.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Status dashboard">
-    </div>
-  </div>
-</div>
-
-<div id="img2" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000;">
-  <div style="display: flex; justify-content: center; align-items: center; height: 100%; padding: 20px;">
-    <div style="max-width: 90%; max-height: 90%; position: relative;">
-      <a href="#" style="position: absolute; top: -40px; right: 0; color: white; font-size: 30px; text-decoration: none;">&times;</a>
-      <img src="docs/images/ulaknode-virtual-1.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Virtual mailboxes">
-    </div>
-  </div>
-</div>
-
-<div id="img3" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000;">
-  <div style="display: flex; justify-content: center; align-items: center; height: 100%; padding: 20px;">
-    <div style="max-width: 90%; max-height: 90%; position: relative;">
-      <a href="#" style="position: absolute; top: -40px; right: 0; color: white; font-size: 30px; text-decoration: none;">&times;</a>
-      <img src="docs/images/ulaknode-postfix-1.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Postfix">
-    </div>
-  </div>
-</div>
-
-<div id="img4" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000;">
-  <div style="display: flex; justify-content: center; align-items: center; height: 100%; padding: 20px;">
-    <div style="max-width: 90%; max-height: 90%; position: relative;">
-      <a href="#" style="position: absolute; top: -40px; right: 0; color: white; font-size: 30px; text-decoration: none;">&times;</a>
-      <img src="docs/images/ulaknode-dovecot-1.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Dovecot">
-    </div>
-  </div>
-</div>
-
-<div id="img5" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000;">
-  <div style="display: flex; justify-content: center; align-items: center; height: 100%; padding: 20px;">
-    <div style="max-width: 90%; max-height: 90%; position: relative;">
-      <a href="#" style="position: absolute; top: -40px; right: 0; color: white; font-size: 30px; text-decoration: none;">&times;</a>
-      <img src="docs/images/ulaknode-rspamd-1.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Rspamd">
-    </div>
-  </div>
-</div>
-
-<div id="img6" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000;">
-  <div style="display: flex; justify-content: center; align-items: center; height: 100%; padding: 20px;">
-    <div style="max-width: 90%; max-height: 90%; position: relative;">
-      <a href="#" style="position: absolute; top: -40px; right: 0; color: white; font-size: 30px; text-decoration: none;">&times;</a>
-      <img src="docs/images/ulaknode-rspamd-dkim-1.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="DKIM signing">
-    </div>
-  </div>
-</div>
-
-<div id="img7" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000;">
-  <div style="display: flex; justify-content: center; align-items: center; height: 100%; padding: 20px;">
-    <div style="max-width: 90%; max-height: 90%; position: relative;">
-      <a href="#" style="position: absolute; top: -40px; right: 0; color: white; font-size: 30px; text-decoration: none;">&times;</a>
-      <img src="docs/images/ulaknode-rspamd-clamav-1.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="ClamAV">
-    </div>
-  </div>
-</div>
-
-<div id="img8" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000;">
-  <div style="display: flex; justify-content: center; align-items: center; height: 100%; padding: 20px;">
-    <div style="max-width: 90%; max-height: 90%; position: relative;">
-      <a href="#" style="position: absolute; top: -40px; right: 0; color: white; font-size: 30px; text-decoration: none;">&times;</a>
-      <img src="docs/images/ulaknode-config-1.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Config Editor">
-    </div>
-  </div>
-</div>
-
-<div id="img9" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000;">
-  <div style="display: flex; justify-content: center; align-items: center; height: 100%; padding: 20px;">
-    <div style="max-width: 90%; max-height: 90%; position: relative;">
-      <a href="#" style="position: absolute; top: -40px; right: 0; color: white; font-size: 30px; text-decoration: none;">&times;</a>
-      <img src="docs/images/ulaknode-config-2.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Config Editor">
-    </div>
-  </div>
-</div>
-
-<div id="img10" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000;">
-  <div style="display: flex; justify-content: center; align-items: center; height: 100%; padding: 20px;">
-    <div style="max-width: 90%; max-height: 90%; position: relative;">
-      <a href="#" style="position: absolute; top: -40px; right: 0; color: white; font-size: 30px; text-decoration: none;">&times;</a>
-      <img src="docs/images/ulaknode-config-3.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Config Editor">
-    </div>
-  </div>
-</div>
-
-<div id="img11" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000;">
-  <div style="display: flex; justify-content: center; align-items: center; height: 100%; padding: 20px;">
-    <div style="max-width: 90%; max-height: 90%; position: relative;">
-      <a href="#" style="position: absolute; top: -40px; right: 0; color: white; font-size: 30px; text-decoration: none;">&times;</a>
-      <img src="docs/images/ulaknode-drupal-1.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Drupal">
-    </div>
-  </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Show modal when clicking thumbnail
-  document.querySelectorAll('a[href^="#img"]').forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href').substring(1);
-      const modal = document.getElementById(targetId);
-      if (modal) {
-        modal.style.display = 'block';
-      }
-    });
-  });
-  
-  // Hide modal when clicking close or background
-  document.querySelectorAll('[id^="img"]').forEach(function(modal) {
-    modal.addEventListener('click', function(e) {
-      if (e.target === this || e.target.textContent === '×') {
-        this.style.display = 'none';
-      }
-    });
-  });
-  
-  // Close modal with Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('[id^="img"]').forEach(function(modal) {
-        modal.style.display = 'none';
-      });
-    }
-  });
-});
-</script>
+<p align="center"><em>📸 Click any screenshot above to view at full size</em></p>
 
 ## What is this?
 
