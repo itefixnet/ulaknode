@@ -12,26 +12,59 @@ Postfix + Dovecot + Rspamd + ClamAV + Fail2ban + Apache/Drupal — supervised in
 ## Screenshots
 
   <p align="center">
-    <a href="#status-modal"><img src="docs/images/ulaknode-status-1.png" width="30%" alt="Status dashboard"></a>
-    <a href="#virtual-modal"><img src="docs/images/ulaknode-virtual-1.png" width="30%" alt="Virtual mailboxes, domains and aliases"></a>
-    <a href="#postfix-modal"><img src="docs/images/ulaknode-postfix-1.png" width="30%" alt="Postfix"></a>
+    <details>
+      <summary><img src="docs/images/ulaknode-status-1.png" width="30%" alt="Status dashboard" style="cursor: pointer;"></summary>
+      <img src="docs/images/ulaknode-status-1.png" width="100%" alt="Status dashboard - Full Size">
+    </details>
+    <details>
+      <summary><img src="docs/images/ulaknode-virtual-1.png" width="30%" alt="Virtual mailboxes, domains and aliases" style="cursor: pointer;"></summary>
+      <img src="docs/images/ulaknode-virtual-1.png" width="100%" alt="Virtual mailboxes, domains and aliases - Full Size">
+    </details>
+    <details>
+      <summary><img src="docs/images/ulaknode-postfix-1.png" width="30%" alt="Postfix" style="cursor: pointer;"></summary>
+      <img src="docs/images/ulaknode-postfix-1.png" width="100%" alt="Postfix - Full Size">
+    </details>
   </p>
 
   <p align="center">
-    <a href="#dovecot-modal"><img src="docs/images/ulaknode-dovecot-1.png" width="30%" alt="Dovecote"></a>
-    <a href="#rspamd-modal"><img src="docs/images/ulaknode-rspamd-1.png" width="30%" alt="Rspamd"></a>
-    <a href="#dkim-modal"><img src="docs/images/ulaknode-rspamd-dkim-1.png" width="30%" alt="Rspamd DKIM signing"></a>
+    <details>
+      <summary><img src="docs/images/ulaknode-dovecot-1.png" width="30%" alt="Dovecot" style="cursor: pointer;"></summary>
+      <img src="docs/images/ulaknode-dovecot-1.png" width="100%" alt="Dovecot - Full Size">
+    </details>
+    <details>
+      <summary><img src="docs/images/ulaknode-rspamd-1.png" width="30%" alt="Rspamd" style="cursor: pointer;"></summary>
+      <img src="docs/images/ulaknode-rspamd-1.png" width="100%" alt="Rspamd - Full Size">
+    </details>
+    <details>
+      <summary><img src="docs/images/ulaknode-rspamd-dkim-1.png" width="30%" alt="Rspamd DKIM signing" style="cursor: pointer;"></summary>
+      <img src="docs/images/ulaknode-rspamd-dkim-1.png" width="100%" alt="Rspamd DKIM signing - Full Size">
+    </details>
   </p>
 
   <p align="center">
-    <a href="#clamav-modal"><img src="docs/images/ulaknode-rspamd-clamav-1.png" width="30%" alt="Rspamd ClamAV"></a>
-    <a href="#config1-modal"><img src="docs/images/ulaknode-config-1.png" width="30%" alt="Config Editor"></a>
-    <a href="#config2-modal"><img src="docs/images/ulaknode-config-2.png" width="30%" alt="Config Editor"></a>
+    <details>
+      <summary><img src="docs/images/ulaknode-rspamd-clamav-1.png" width="30%" alt="Rspamd ClamAV" style="cursor: pointer;"></summary>
+      <img src="docs/images/ulaknode-rspamd-clamav-1.png" width="100%" alt="Rspamd ClamAV - Full Size">
+    </details>
+    <details>
+      <summary><img src="docs/images/ulaknode-config-1.png" width="30%" alt="Config Editor" style="cursor: pointer;"></summary>
+      <img src="docs/images/ulaknode-config-1.png" width="100%" alt="Config Editor - Full Size">
+    </details>
+    <details>
+      <summary><img src="docs/images/ulaknode-config-2.png" width="30%" alt="Config Editor" style="cursor: pointer;"></summary>
+      <img src="docs/images/ulaknode-config-2.png" width="100%" alt="Config Editor - Full Size">
+    </details>
   </p>
 
   <p align="center">
-    <a href="#config3-modal"><img src="docs/images/ulaknode-config-3.png" width="30%" alt="Config editor"></a>
-    <a href="#drupal-modal"><img src="docs/images/ulaknode-drupal-1.png" width="30%" alt="Drupal"></a>
+    <details>
+      <summary><img src="docs/images/ulaknode-config-3.png" width="30%" alt="Config editor" style="cursor: pointer;"></summary>
+      <img src="docs/images/ulaknode-config-3.png" width="100%" alt="Config Editor - Full Size">
+    </details>
+    <details>
+      <summary><img src="docs/images/ulaknode-drupal-1.png" width="30%" alt="Drupal" style="cursor: pointer;"></summary>
+      <img src="docs/images/ulaknode-drupal-1.png" width="100%" alt="Drupal - Full Size">
+    </details>
   </p>
 
 <details id="status-modal">
