@@ -16,36 +16,36 @@ Postfix + Dovecot + Rspamd + ClamAV + Fail2ban + Apache/Drupal — supervised in
   <summary>Show screenshots</summary>
 
   <p align="center">
-    <img src="docs/images/ulaknode-status-1.png" width="45%" alt="Status dashboard">
-    <img src="docs/images/ulaknode-virtual-1.png" width="45%" alt="Virtual mailboxes, domains and aliases">
+    <a href="docs/images/ulaknode-status-1.png"><img src="docs/images/ulaknode-status-1.png" width="45%" alt="Status dashboard"></a>
+    <a href="docs/images/ulaknode-virtual-1.png"><img src="docs/images/ulaknode-virtual-1.png" width="45%" alt="Virtual mailboxes, domains and aliases"></a>
   </p>
 
   <p align="center">
-    <img src="docs/images/ulaknode-postfix-1.png" width="45%" alt="Postfix">
-    <img src="docs/images/ulaknode-dovecote-1.png" width="45%" alt="Dovecote">
+    <a href="docs/images/ulaknode-postfix-1.png"><img src="docs/images/ulaknode-postfix-1.png" width="45%" alt="Postfix"></a>
+    <a href="docs/images/ulaknode-dovecote-1.png"><img src="docs/images/ulaknode-dovecote-1.png" width="45%" alt="Dovecote"></a>
   </p>
 
   <p align="center">
-    <img src="docs/images/ulaknode-rspamd-1.png" width="45%" alt="Rspamd">
-    <img src="docs/images/ulaknode-rspamd-dkim-1.png" width="45%" alt="Rspamd DKIM signing">
+    <a href="docs/images/ulaknode-rspamd-1.png"><img src="docs/images/ulaknode-rspamd-1.png" width="45%" alt="Rspamd"></a>
+    <a href="docs/images/ulaknode-rspamd-dkim-1.png"><img src="docs/images/ulaknode-rspamd-dkim-1.png" width="45%" alt="Rspamd DKIM signing"></a>
   </p>
 
   <p align="center">
-    <img src="docs/images/ulaknode-rspamd-clamav-1.png" width="45%" alt="Rspamd ClamAV">
-    <img src="docs/images/ulaknode-config-1.png" width="45%" alt="Config Editor">
+    <a href="docs/images/ulaknode-rspamd-clamav-1.png"><img src="docs/images/ulaknode-rspamd-clamav-1.png" width="45%" alt="Rspamd ClamAV"></a>
+    <a href="docs/images/ulaknode-config-1.png"><img src="docs/images/ulaknode-config-1.png" width="45%" alt="Config Editor"></a>
   </p>
 
   <p align="center">
-    <img src="docs/images/ulaknode-config-2.png" width="45%" alt="Config Editor">
-    <img src="docs/images/ulaknode-config-3.png" width="45%" alt="Config editor">
+    <a href="docs/images/ulaknode-config-2.png"><img src="docs/images/ulaknode-config-2.png" width="45%" alt="Config Editor"></a>
+    <a href="docs/images/ulaknode-config-3.png"><img src="docs/images/ulaknode-config-3.png" width="45%" alt="Config editor"></a>
   </p>
 
   <p align="center">
-    <img src="docs/images/ulaknode-drupal-1.png" width="45%" alt="Drupal">
+    <a href="docs/images/ulaknode-drupal-1.png"><img src="docs/images/ulaknode-drupal-1.png" width="45%" alt="Drupal"></a>
   </p>
 
   <p align="center">
-    <em>Add PNGs under <code>docs/images/</code> with the names above to populate this gallery.</em>
+    <em>Add PNGs under <code>docs/images/</code> with the names above to populate this gallery. Click any image to view at full size.</em>
   </p>
 
 </details>
