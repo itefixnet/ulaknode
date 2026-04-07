@@ -1,0 +1,98 @@
+#!/bin/bash
+# ulaknode-service — start/stop/restart/status mail services
+
+set -euo pipefail
+
+ACTIONS="start|stop|restart|status"
+SERVICES="postfix|dovecot|rspamd|redis|clamav|freshclam"
+
+usage() {
+    echo "Usage: ulaknode-service <action> <service>" >&2
+    echo "" >&2
+    echo "Actions:  start  stop  restart  status" >&2
+    echo "Services: postfix  dovecot  rspamd  redis  clamav  freshclam" >&2
+    exit 1
+}
+
+ACTION="${1:-}"
+SERVICE="${2:-}"
+
+[[ "$ACTION" == "-h" || "$ACTION" == "--help" || -z "$ACTION" ]] && usage
+
+case "$ACTION" in
+  start|stop|restart|status) ;;
+  *) echo "Error: invalid action '$ACTION'. Allowed: $ACTIONS" >&2; exit 1 ;;
+esac
+
+[[ -z "$SERVICE" ]] && { echo "Error: service name required. Allowed: $SERVICES" >&2; exit 1; }
+
+LOG=/var/log
+
+pidof_service() {
+    case "$1" in
+      rspamd)    cat /run/rspamd/rspamd.pid 2>/dev/null ;;
+      redis)     cat /run/redis/redis-server.pid 2>/dev/null ;;
+      clamav)    cat /run/clamav/clamd.pid 2>/dev/null ;;
+      freshclam) pgrep -x freshclam 2>/dev/null | head -1 ;;
+    esac
+}
+
+is_running() {
+    local pid
+    case "$1" in
+      postfix)   postfix status &>/dev/null ;;
+      dovecot)   dovecot status &>/dev/null ;;
+      rspamd|redis|clamav|freshclam)
+          pid=$(pidof_service "$1") && [[ -n "$pid" ]] && kill -0 "$pid" 2>/dev/null ;;
+    esac
+}
+
+do_start() {
+    echo "[$(date +'%F %T')] start $SERVICE"
+    case "$SERVICE" in
+      postfix)   postfix start >> "$LOG/postfix.log"  2>> "$LOG/postfix.err" ;;
+      dovecot)   dovecot       >> "$LOG/dovecot.log"  2>> "$LOG/dovecot.err" ;;
+      rspamd)    /usr/bin/rspamd -f -u _rspamd -c /etc/rspamd/rspamd.conf >> "$LOG/rspamd.log" 2>> "$LOG/rspamd.err" & ;;
+      redis)     /usr/bin/redis-server --daemonize no --loglevel notice >> "$LOG/redis.log" 2>> "$LOG/redis.err" & ;;
+      clamav)    /usr/sbin/clamd --foreground=true >> "$LOG/clamd.log" 2>> "$LOG/clamd.err" & ;;
+      freshclam) /usr/bin/freshclam -d --foreground=true >> "$LOG/freshclam.log" 2>> "$LOG/freshclam.err" & ;;
+      *) echo "Error: unknown service '$SERVICE'. Allowed: $SERVICES" >&2; exit 1 ;;
+    esac
+}
+
+do_stop() {
+    echo "[$(date +'%F %T')] stop $SERVICE"
+    case "$SERVICE" in
+      postfix)   postfix stop ;;
+      dovecot)   dovecot stop ;;
+      rspamd|redis|clamav|freshclam)
+          local pid
+          pid=$(pidof_service "$SERVICE") || { echo "$SERVICE: not running"; return; }
+          kill "$pid"
+          ;;
+      *) echo "Error: unknown service '$SERVICE'. Allowed: $SERVICES" >&2; exit 1 ;;
+    esac
+}
+
+do_status() {
+    echo "[$(date +'%F %T')] status $SERVICE"
+    case "$SERVICE" in
+      postfix) postfix status ;;
+      dovecot) dovecot status ;;
+      rspamd|redis|clamav|freshclam)
+          if is_running "$SERVICE"; then
+              echo "$SERVICE: RUNNING (pid $(pidof_service "$SERVICE"))"
+          else
+              echo "$SERVICE: STOPPED"
+          fi
+          ;;
+      *) echo "Error: unknown service '$SERVICE'. Allowed: $SERVICES" >&2; exit 1 ;;
+    esac
+}
+
+case "$ACTION" in
+  start)   do_start ;;
+  stop)    do_stop ;;
+  restart) do_stop; sleep 1; do_start ;;
+  status)  do_status ;;
+esac

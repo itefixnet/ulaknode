@@ -1,0 +1,44 @@
+#!/bin/bash
+# ulaknode-version — show versions of all ulaknode components
+
+ULAKNODE_VERSION="0.1.0"
+
+fmt() {
+    printf "  %-20s %s\n" "$1" "$2"
+}
+
+echo "ulaknode $ULAKNODE_VERSION"
+echo ""
+echo "Components:"
+
+# Postfix
+POSTFIX=$(postconf mail_version 2>/dev/null | awk '{print $3}')
+fmt "postfix" "${POSTFIX:-unknown}"
+
+# Dovecot
+DOVECOT=$(dovecot --version 2>/dev/null | awk '{print $1}')
+fmt "dovecot" "${DOVECOT:-unknown}"
+
+# Rspamd
+RSPAMD=$(rspamd --version 2>/dev/null | head -1 | awk '{print $NF}')
+fmt "rspamd" "${RSPAMD:-unknown}"
+
+# Redis
+REDIS=$(redis-server --version 2>/dev/null | awk -F'[= ]' '{print $4}')
+fmt "redis" "${REDIS:-unknown}"
+
+# ClamAV
+CLAMD=$(clamd --version 2>/dev/null | awk -F'/' '{print $1}' | awk '{print $2}')
+fmt "clamav" "${CLAMD:-unknown}"
+
+# OpenSSL
+OPENSSL=$(openssl version 2>/dev/null | awk '{print $2}')
+fmt "openssl" "${OPENSSL:-unknown}"
+
+# OS
+OS=$(. /etc/os-release 2>/dev/null && echo "$PRETTY_NAME")
+echo ""
+echo "Platform:"
+fmt "os" "${OS:-unknown}"
+fmt "kernel" "$(uname -r)"
+fmt "arch" "$(uname -m)"

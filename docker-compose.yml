@@ -1,0 +1,32 @@
+services:
+  ulaknode:
+    image: itefixnet/ulaknode:latest
+    container_name: ulaknode
+    hostname: ${MAIL_HOSTNAME:-mail.example.com}
+    restart: unless-stopped
+    environment:
+      - MAIL_HOSTNAME=${MAIL_HOSTNAME:-mail.example.com}
+      - MAIL_DOMAIN=${MAIL_DOMAIN:-}
+    ports:
+      - "25:25"
+      - "587:587"
+      - "993:993"
+    volumes:
+      - ulak_mail:/var/mail
+      - ulak_logs:/var/log
+      - ulak_clamav:/var/lib/clamav
+      - ulak_postfix:/etc/postfix
+      - ulak_dovecot:/etc/dovecot
+      - ulak_rspamd:/etc/rspamd
+      - ulak_certs:/etc/ssl/mail
+      - /etc/letsencrypt/live/mail.yourdomain.com/fullchain.pem:/run/certs/fullchain.pem:ro
+      - /etc/letsencrypt/live/mail.yourdomain.com/privkey.pem:/run/certs/privkey.pem:ro
+
+volumes:
+  ulak_mail:
+  ulak_logs:
+  ulak_clamav:
+  ulak_postfix:
+  ulak_dovecot:
+  ulak_rspamd:
+  ulak_certs:

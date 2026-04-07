@@ -1,0 +1,70 @@
+#!/bin/bash
+# docker-init — PID 1 init script for ulaknode
+# Starts all mail services in dependency order, handles graceful shutdown.
+
+set -uo pipefail
+
+LOG=/var/log
+
+log()  { echo "[$(date +'%F %T')] $*"; }
+fail() { log "ERROR: $*" >&2; }
+
+wait_for_port() {
+    local port="$1" timeout="${2:-30}" elapsed=0
+    until socat /dev/null TCP4:127.0.0.1:"$port",timeout=1 2>/dev/null; do
+        [[ $elapsed -ge $timeout ]] && return 1
+        sleep 1; (( elapsed++ ))
+    done
+}
+
+wait_for_socket() {
+    local sock="$1" timeout="${2:-30}" elapsed=0
+    until [[ -S "$sock" ]]; do
+        [[ $elapsed -ge $timeout ]] && return 1
+        sleep 1; (( elapsed++ ))
+    done
+}
+
+stop_all() {
+    log "Shutting down..."
+    postfix stop               >> "$LOG/postfix.log"  2>&1 || true
+    dovecot stop               >> "$LOG/dovecot.log"  2>&1 || true
+    [[ -f /run/rspamd/rspamd.pid ]] && kill "$(cat /run/rspamd/rspamd.pid)" 2>/dev/null || true
+    [[ -f /run/redis/redis-server.pid ]] && kill "$(cat /run/redis/redis-server.pid)" 2>/dev/null || true
+    [[ -f /run/clamav/clamd.pid ]] && kill "$(cat /run/clamav/clamd.pid)" 2>/dev/null || true
+    log "Done."
+}
+trap stop_all SIGTERM SIGINT
+
+log "Checking license..."
+LICENSE_STATUS=$(ulaknode-license status 2>/dev/null || echo "INVALID")
+case "$LICENSE_STATUS" in
+    VALID) log "License: valid." ;;
+    *)     log "WARNING: No valid license found. Install a license at /etc/ulaknode/license." ;;
+esac
+
+log "Starting freshclam..."
+/usr/bin/freshclam -d --foreground=true >> "$LOG/freshclam.log" 2>> "$LOG/freshclam.err" &
+
+log "Starting clamd..."
+/usr/sbin/clamd --foreground=true >> "$LOG/clamd.log" 2>> "$LOG/clamd.err" &
+
+log "Starting redis..."
+/usr/bin/redis-server --daemonize no --loglevel notice >> "$LOG/redis.log" 2>> "$LOG/redis.err" &
+wait_for_port 6379 30 || fail "redis did not start in time"
+log "Redis ready."
+
+log "Starting rspamd..."
+/usr/bin/rspamd -f -u _rspamd -c /etc/rspamd/rspamd.conf >> "$LOG/rspamd.log" 2>> "$LOG/rspamd.err" &
+wait_for_port 11332 30 || fail "rspamd did not start in time"
+log "Rspamd ready."
+
+log "Starting postfix..."
+postfix start >> "$LOG/postfix.log" 2>> "$LOG/postfix.err"
+
+log "Starting dovecot..."
+mkdir -p /var/spool/postfix/private
+/usr/sbin/dovecot -F >> "$LOG/dovecot.log" 2>> "$LOG/dovecot.err" &
+
+log "All services running."
+while true; do sleep 60; done

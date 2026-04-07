@@ -1,0 +1,188 @@
+#!/bin/bash
+# ulaknode-dkim — manage DKIM signing keys for Rspamd
+# Usage: ulaknode-dkim <command> [args]
+#
+#   generate <domain> [selector]  — generate a 2048-bit RSA key pair (default selector: mail)
+#   list                          — list all configured domain/selector pairs
+#   show     <domain> [selector]  — print the DNS TXT record to publish
+#   remove   <domain> <selector>  — delete a key and remove it from rspamd config
+
+set -euo pipefail
+
+DKIM_DIR="/etc/rspamd/dkim"
+DKIM_CONF="/etc/rspamd/local.d/dkim_signing.conf"
+CMD="${1:-}"
+
+usage() {
+    echo "Usage: ulaknode-dkim <generate|list|show|remove> [args]" >&2
+    echo "" >&2
+    echo "  generate <domain> [selector]  generate key pair (default selector: mail)" >&2
+    echo "  list                          list all domain/selector pairs" >&2
+    echo "  show     <domain> [selector]  print DNS TXT record to publish" >&2
+    echo "  remove   <domain> <selector>  delete key and deregister from rspamd" >&2
+    echo "" >&2
+    echo "After generate or remove, restart rspamd:" >&2
+    echo "  ulaknode-service restart rspamd" >&2
+    exit 1
+}
+
+# Rebuild /etc/rspamd/local.d/dkim_signing.conf from all keys on disk
+regenerate_conf() {
+    local tmp
+    tmp=$(mktemp)
+
+    echo "# Managed by ulaknode-dkim — do not edit manually" > "$tmp"
+    echo "domain {" >> "$tmp"
+
+    local found=0
+    for domain_dir in "$DKIM_DIR"/*/; do
+        [[ -d "$domain_dir" ]] || continue
+        local domain
+        domain=$(basename "$domain_dir")
+        local has_keys=0
+
+        for keyfile in "$domain_dir"*.key; do
+            [[ -f "$keyfile" ]] || continue
+            if [[ $has_keys -eq 0 ]]; then
+                echo "  $domain {" >> "$tmp"
+                echo "    selectors [" >> "$tmp"
+                has_keys=1
+                found=1
+            fi
+            local selector
+            selector=$(basename "$keyfile" .key)
+            echo "      {" >> "$tmp"
+            echo "        path = \"$keyfile\";" >> "$tmp"
+            echo "        selector = \"$selector\";" >> "$tmp"
+            echo "      }," >> "$tmp"
+        done
+
+        if [[ $has_keys -eq 1 ]]; then
+            echo "    ]" >> "$tmp"
+            echo "  }" >> "$tmp"
+        fi
+    done
+
+    echo "}" >> "$tmp"
+
+    install -o root -g root -m 644 "$tmp" "$DKIM_CONF"
+    rm -f "$tmp"
+
+    if [[ $found -eq 0 ]]; then
+        echo "  (no keys registered)"
+    fi
+}
+
+dns_record() {
+    local domain="$1" selector="$2"
+    local keyfile="$DKIM_DIR/$domain/$selector.key"
+    local pubkey
+    pubkey=$(openssl rsa -in "$keyfile" -pubout 2>/dev/null \
+        | grep -v '^-' | tr -d '\n')
+    echo "${selector}._domainkey.${domain}  IN TXT  \"v=DKIM1; k=rsa; p=${pubkey}\""
+}
+
+case "$CMD" in
+  generate)
+    DOMAIN="${2:-}"
+    SELECTOR="${3:-mail}"
+    if [[ -z "$DOMAIN" ]]; then
+        echo "Error: domain required." >&2
+        usage
+    fi
+
+    KEY_DIR="$DKIM_DIR/$DOMAIN"
+    KEYFILE="$KEY_DIR/$SELECTOR.key"
+
+    if [[ -f "$KEYFILE" ]]; then
+        echo "Error: key already exists for $DOMAIN / $SELECTOR." >&2
+        echo "  Remove it first: ulaknode-dkim remove $DOMAIN $SELECTOR" >&2
+        exit 1
+    fi
+
+    mkdir -p "$KEY_DIR"
+    chown _rspamd:_rspamd "$KEY_DIR"
+    chmod 750 "$KEY_DIR"
+
+    openssl genrsa -out "$KEYFILE" 2048 2>/dev/null
+    chown _rspamd:_rspamd "$KEYFILE"
+    chmod 640 "$KEYFILE"
+
+    regenerate_conf
+
+    echo "Generated DKIM key: $DOMAIN / selector=$SELECTOR"
+    echo ""
+    echo "Publish this DNS TXT record:"
+    dns_record "$DOMAIN" "$SELECTOR"
+    echo ""
+    echo "Then restart rspamd: ulaknode-service restart rspamd"
+    ;;
+
+  list)
+    echo "DKIM keys:"
+    found=0
+    for domain_dir in "$DKIM_DIR"/*/; do
+        [[ -d "$domain_dir" ]] || continue
+        domain=$(basename "$domain_dir")
+        for keyfile in "$domain_dir"*.key; do
+            [[ -f "$keyfile" ]] || continue
+            selector=$(basename "$keyfile" .key)
+            printf "  %-30s  selector=%s\n" "$domain" "$selector"
+            found=1
+        done
+    done
+    if [[ $found -eq 0 ]]; then
+        echo "  (none)"
+    fi
+    ;;
+
+  show)
+    DOMAIN="${2:-}"
+    SELECTOR="${3:-mail}"
+    if [[ -z "$DOMAIN" ]]; then
+        echo "Error: domain required." >&2
+        usage
+    fi
+    KEYFILE="$DKIM_DIR/$DOMAIN/$SELECTOR.key"
+    if [[ ! -f "$KEYFILE" ]]; then
+        echo "Error: no key found for $DOMAIN / $SELECTOR." >&2
+        exit 1
+    fi
+    echo "DNS TXT record for $DOMAIN (selector: $SELECTOR):"
+    echo ""
+    dns_record "$DOMAIN" "$SELECTOR"
+    echo ""
+    echo "Record name:  ${SELECTOR}._domainkey.${DOMAIN}"
+    ;;
+
+  remove)
+    DOMAIN="${2:-}"
+    SELECTOR="${3:-}"
+    if [[ -z "$DOMAIN" || -z "$SELECTOR" ]]; then
+        echo "Error: domain and selector are both required." >&2
+        usage
+    fi
+    KEYFILE="$DKIM_DIR/$DOMAIN/$SELECTOR.key"
+    if [[ ! -f "$KEYFILE" ]]; then
+        echo "Error: no key found for $DOMAIN / $SELECTOR." >&2
+        exit 1
+    fi
+    rm -f "$KEYFILE"
+    # Remove domain dir if empty
+    rmdir --ignore-fail-on-non-empty "$DKIM_DIR/$DOMAIN"
+    regenerate_conf
+    echo "Removed DKIM key: $DOMAIN / selector=$SELECTOR"
+    echo "Remember to remove the DNS TXT record: ${SELECTOR}._domainkey.${DOMAIN}"
+    echo "Then restart rspamd: ulaknode-service restart rspamd"
+    ;;
+
+  -h|--help|"")
+    usage
+    ;;
+
+  *)
+    echo "Error: unknown command '$CMD'." >&2
+    echo "Run 'ulaknode-dkim --help' for usage." >&2
+    exit 1
+    ;;
+esac
