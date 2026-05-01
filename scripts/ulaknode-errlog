@@ -15,7 +15,6 @@ usage() {
     echo "  dovecot    IMAP server" >&2
     echo "  rspamd     spam filter" >&2
     echo "  clamav     antivirus daemon" >&2
-    echo "  fail2ban   intrusion prevention" >&2
     echo "  freshclam  ClamAV signature updater" >&2
     echo "" >&2
     echo "Options:" >&2
@@ -41,7 +40,6 @@ case "$SERVICE" in
   dovecot)   LOG="/var/log/dovecot.err" ;;
   rspamd)    LOG="/var/log/rspamd.err" ;;
   clamav)    LOG="/var/log/clamav.err" ;;
-  fail2ban)  LOG="/var/log/fail2ban.err" ;;
   freshclam) LOG="/var/log/freshclam.err" ;;
   *)
     echo "Error: unknown service '$SERVICE'." >&2
