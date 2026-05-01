@@ -1,7 +1,7 @@
 #!/bin/bash
 # ulaknode-version — show versions of all ulaknode components
 
-ULAKNODE_VERSION="0.1.0"
+ULAKNODE_VERSION="${ULAKNODE_VERSION:-unknown}"
 
 fmt() {
     printf "  %-20s %s\n" "$1" "$2"

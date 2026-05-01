@@ -2,6 +2,9 @@
 # Base
 FROM debian:stable-slim
 
+ARG VERSION=dev
+ENV ULAKNODE_VERSION=${VERSION}
+
 # Add upstream repos for Rspamd and Redis (Debian stable lags significantly)
 RUN apt-get update && apt-get -y install --no-install-recommends \
     curl gnupg2 lsb-release ca-certificates && \
@@ -20,7 +23,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     curl sudo dnsutils \
     netcat-openbsd iproute2 socat \
     postfix dovecot-imapd dovecot-lmtpd \
-    rspamd redis clamav clamav-daemon \
+    rspamd publicsuffix redis clamav clamav-daemon \
     libsasl2-modules lsb-release ca-certificates && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
