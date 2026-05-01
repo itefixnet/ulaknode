@@ -36,13 +36,6 @@ stop_all() {
 }
 trap stop_all SIGTERM SIGINT
 
-log "Checking license..."
-LICENSE_STATUS=$(ulaknode-license status 2>/dev/null || echo "INVALID")
-case "$LICENSE_STATUS" in
-    VALID) log "License: valid." ;;
-    *)     log "WARNING: No valid license found. Install a license at /etc/ulaknode/license." ;;
-esac
-
 log "Starting freshclam..."
 /usr/bin/freshclam -d --foreground=true >> "$LOG/freshclam.log" 2>> "$LOG/freshclam.err" &
 
